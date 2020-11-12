@@ -81,7 +81,7 @@ public extension IPGenerator {
             struct __name__ : WFInterface {
                 var link: String = "__link__"
                 var method: Int = __method__
-                var param:WFInterfaceParameter?
+                var param:WFInterfaceParameter = __param__()
             }
             """
         
@@ -132,10 +132,13 @@ public extension IPGenerator {
         let method = "\(dic["method"] ?? "0")"
         
         let ifname = "interface_\(name)"
+        let pfname = "param_\(name)"
         var itmp = getInterfaceTmp()
         itmp = (itmp as NSString).replacingOccurrences(of: "__name__", with: ifname)
         itmp = (itmp as NSString).replacingOccurrences(of: "__link__", with: link)
         itmp = (itmp as NSString).replacingOccurrences(of: "__method__", with: method)
+        itmp = (itmp as NSString).replacingOccurrences(of: "__param__", with: pfname)
+        
         let idata = itmp.data(using: .utf8)!
         let ifpath = ifdic + "/" + ifname + ".swift"
         if !FileManager.default.fileExists(atPath: ifpath) {
