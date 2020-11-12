@@ -94,9 +94,9 @@ public extension IPGenerator {
             import Foundation
 
             struct __name__ : WFInterfaceParameter {
-                var nameInfo:[String:String] = [__nameInfo__]
-                var requires:[String] = [__requires__]
-                var params:[String] = [__params__]
+                var nameInfo:[String:String] = __nameInfo__
+                var requires:[String] = __requires__
+                var params:[String] = __params__
                 
                 __propertys__
             }
@@ -177,7 +177,9 @@ public extension IPGenerator {
             params.append(key)
         }
         let p:String = "var " + params.joined(separator: ",") + ":String = \"\""
-        ptmp = (ptmp as NSString).replacingOccurrences(of: "__nameInfo__", with: nameInfo.toString())
+        var nameInfos = nameInfo.toString().replacingOccurrences(of: "{", with: "[")
+        nameInfos = nameInfos.replacingOccurrences(of: "}", with: "]")
+        ptmp = (ptmp as NSString).replacingOccurrences(of: "__nameInfo__", with: nameInfos)
         ptmp = (ptmp as NSString).replacingOccurrences(of: "__requires__", with: requires.toString())
         ptmp = (ptmp as NSString).replacingOccurrences(of: "__params__", with: params.toString())
         ptmp = (ptmp as NSString).replacingOccurrences(of: "__propertys__", with: p)
