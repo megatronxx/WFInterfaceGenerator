@@ -44,12 +44,12 @@ struct WFInterfaceGenerator {
 
 public class IPGenerator:NSObject {
     //接口文件路径
-    var interfaceListPath:String = ""
+    public var interfaceListPath:String = ""
     //输出文件路径
-    var outModelPath:String = ""
+    public var outModelPath:String = ""
 }
 
-extension IPGenerator {
+public extension IPGenerator {
     //开工
     func start() {
         if interfaceListPath.count <= 0 || outModelPath.count <= 0 {
