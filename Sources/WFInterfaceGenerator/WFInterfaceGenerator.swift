@@ -174,7 +174,7 @@ public extension IPGenerator {
             //全部
             params.append(key)
         }
-        let p:String = params.joined(separator: ",") + ":String = \"\""
+        let p:String = "var " + params.joined(separator: ",") + ":String = \"\""
         ptmp = (ptmp as NSString).replacingOccurrences(of: "__nameInfo__", with: nameInfo.toString())
         ptmp = (ptmp as NSString).replacingOccurrences(of: "__requires__", with: requires.toString())
         ptmp = (ptmp as NSString).replacingOccurrences(of: "__params__", with: params.toString())
