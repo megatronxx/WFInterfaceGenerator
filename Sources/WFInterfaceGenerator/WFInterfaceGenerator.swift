@@ -40,13 +40,16 @@ protocol WFInterface {
 
 struct WFInterfaceGenerator {
     var text:String = "接口参数生成器"
+}
+
+public class IPGenerator:NSObject {
     //接口文件路径
     var interfaceListPath:String = ""
     //输出文件路径
     var outModelPath:String = ""
-    
 }
-extension WFInterfaceGenerator {
+
+extension IPGenerator {
     //开工
     func start() {
         if interfaceListPath.count <= 0 || outModelPath.count <= 0 {
