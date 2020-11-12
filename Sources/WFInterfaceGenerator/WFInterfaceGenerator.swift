@@ -64,8 +64,9 @@ public extension IPGenerator {
     //获取接口列表
     func getInterfaces() -> Array<NSDictionary> {
         if FileManager.default.fileExists(atPath: interfaceListPath) {
-            let arr = NSArray(contentsOfFile: interfaceListPath) as! [NSDictionary]
-            return arr
+            guard let data = NSData(contentsOfFile: interfaceListPath) else { return [] }
+            guard let arr = try? JSONSerialization.jsonObject(with: data as Data, options: JSONSerialization.ReadingOptions.allowFragments) else { return []}
+            return arr as! [NSDictionary]
         }else{
             print("接口文件不存在")
             return []
