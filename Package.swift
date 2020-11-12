@@ -25,8 +25,5 @@ let package = Package(
         .target(
             name: "WFInterfaceGenerator",
             dependencies: []),
-        .testTarget(
-            name: "WFInterfaceGeneratorTests",
-            dependencies: ["WFInterfaceGenerator"]),
     ]
 )

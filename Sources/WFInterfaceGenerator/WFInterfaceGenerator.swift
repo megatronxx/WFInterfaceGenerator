@@ -108,8 +108,8 @@ public extension IPGenerator {
     
     //根据接口列表生成（接口索引文件，接口文件，参数文件）
     func requestGenerate(arr:[NSDictionary]) {
-        let ifdic = interfaceListPath + "/interfaces"
-        let ipdic = interfaceListPath + "/params"
+        let ifdic = outModelPath + "/interfaces"
+        let ipdic = outModelPath + "/params"
         if !FileManager.default.fileExists(atPath: ifdic, isDirectory: UnsafeMutablePointer(bitPattern: 1)) {
            try? FileManager.default.createDirectory(atPath: ifdic, withIntermediateDirectories: false, attributes: nil)
         }
@@ -123,7 +123,7 @@ public extension IPGenerator {
     }
     //根据字典创建接口文件
     func createIFile(dic:NSDictionary) {
-        let ifdic = interfaceListPath + "/interfaces"
+        let ifdic = outModelPath + "/interfaces"
         
         let name = "\(dic["name"] ?? "")"
         let link = "\(dic["link"] ?? "")"
@@ -144,7 +144,7 @@ public extension IPGenerator {
     }
     //根据字典创建参数文件
     func createPFile(dic:NSDictionary) {
-        let ipdic = interfaceListPath + "/params"
+        let ipdic = outModelPath + "/params"
         
         let name = "\(dic["name"] ?? "")"
         let param = dic["param"] as! [NSDictionary]
