@@ -110,10 +110,12 @@ public extension IPGenerator {
     func requestGenerate(arr:[NSDictionary]) {
         let ifdic = outModelPath + "/interfaces"
         let ipdic = outModelPath + "/params"
-        if !FileManager.default.fileExists(atPath: ifdic, isDirectory: UnsafeMutablePointer(bitPattern: 1)) {
+        
+        var isDir : ObjCBool = true
+        if !FileManager.default.fileExists(atPath: ifdic, isDirectory: &isDir) {
            try? FileManager.default.createDirectory(atPath: ifdic, withIntermediateDirectories: false, attributes: nil)
         }
-        if !FileManager.default.fileExists(atPath: ipdic, isDirectory: UnsafeMutablePointer(bitPattern: 1)) {
+        if !FileManager.default.fileExists(atPath: ipdic, isDirectory: &isDir) {
            try? FileManager.default.createDirectory(atPath: ipdic, withIntermediateDirectories: false, attributes: nil)
         }
         for d in arr {
