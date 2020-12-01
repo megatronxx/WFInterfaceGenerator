@@ -56,7 +56,7 @@ public extension IPGenerator {
             print("请完善路径")
             return
         }else{
-            let arr = getInterfaces()
+            let arr = getInterfaces_plist()
             requestGenerate(arr: arr)
         }
     }
