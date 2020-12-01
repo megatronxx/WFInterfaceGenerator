@@ -72,6 +72,15 @@ public extension IPGenerator {
             return []
         }
     }
+    func getInterfaces_plist() -> Array<NSDictionary> {
+        if FileManager.default.fileExists(atPath: interfaceListPath) {
+            guard let arr = NSArray(contentsOfFile: interfaceListPath) else { return [] }
+            return arr as! [NSDictionary]
+        }else{
+            print("接口文件不存在")
+            return []
+        }
+    }
     //获取接口结构体末班
     func getInterfaceTmp() -> String {
         let res =
